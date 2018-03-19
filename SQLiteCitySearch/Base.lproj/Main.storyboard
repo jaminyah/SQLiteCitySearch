@@ -49,7 +49,9 @@
                             <constraint firstItem="rnL-1E-PEp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xNw-4r-Jsw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="fGp-Zo-7MO"/>
+                    <navigationItem key="navigationItem" id="fGp-Zo-7MO">
+                        <barButtonItem key="backBarButtonItem" title="Search" id="dH7-dW-FG9"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="resultView" destination="rnL-1E-PEp" id="wvj-IL-OlN"/>
                         <segue destination="e0l-Ll-5C7" kind="show" identifier="mapSegue" id="0MD-JU-cI0"/>

@@ -180,10 +180,12 @@ extension ViewController : UISearchBarDelegate {
                     let sqLat = String(cString:sqlite3_column_text(sqlStatement, 2))
                     let sqLong = String(cString:sqlite3_column_text(sqlStatement, 3))
                     
-                    let sqLatReal = Double(sqLat)
+                    let sqLatReal = Double(sqLat)      // String to Double
                     let sqLongReal = Double(sqLong)
                     
-                    cityObject = City(name: sqlName, region: sqlRegion, latitude: sqLatReal!, longitude: sqLongReal!)
+
+                    
+                    cityObject = City(name: sqlName, region: sqlRegion, latitude: sqLatReal!, longitude:sqLongReal!)
                     cityList.append(cityObject)
                 }
                 sqlite3_finalize(sqlStatement)

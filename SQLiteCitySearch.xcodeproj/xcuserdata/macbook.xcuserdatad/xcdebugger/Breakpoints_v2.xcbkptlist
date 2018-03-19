@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SQLiteCitySearch/ViewController.swift"
-            timestampString = "543110474.049807"
+            timestampString = "543113639.809714"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "searchDatabase(searchTerm:)"
             landmarkType = "7">
          </BreakpointContent>

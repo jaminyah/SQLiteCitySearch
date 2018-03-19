@@ -14,34 +14,30 @@ class MapViewController: UIViewController {
     var selectedCity = City()
 
     @IBOutlet weak var mapView: MKMapView!
-    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-       /* let swipeLeft = UISwipeGestureRecognizer()
-        swipeLeft.addTarget(self, action: #selector(dismissMapView))
-        swipeLeft.direction = .left
-        self.view!.addGestureRecognizer(swipeLeft)*/
+        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        setMapRegion()
         
-        // Debug
-        print("selectedCityState: \(selectedCity.name)")
+        let pinTitle = selectedCity.name + ", " + selectedCity.region
+        let citylat = selectedCity.latitude
+        let citylong = selectedCity.longitude
+        let coordinates = CLLocationCoordinate2D(latitude: citylat, longitude: citylong)
+        let cityInfo = MKPinInfo(title: pinTitle, coordinate: coordinates)
+        
+        mapView.addAnnotation(cityInfo)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-   /* @IBAction func dismissMapView(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }*/
     
-
     /*
     // MARK: - Navigation
 
@@ -51,5 +47,10 @@ class MapViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    func setMapRegion() {
+        let location = CLLocation(latitude: selectedCity.latitude, longitude: selectedCity.longitude)
+        let cityRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 12000, 12000)
+        mapView.setRegion(cityRegion, animated: true)
+    }
 }

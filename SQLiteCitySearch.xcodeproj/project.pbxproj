@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA06640F20605B2C006DE3CF /* MKPinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06640E20605B2C006DE3CF /* MKPinInfo.swift */; };
 		FA1FE32F205DFE4E007D6DC7 /* cities_usa.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = FA1FE32E205DFE4E007D6DC7 /* cities_usa.sqlite */; };
 		FA7B64AF205CDF6B00E583BA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7B64AE205CDF6B00E583BA /* MapViewController.swift */; };
 		FA7B64B2205CE80200E583BA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7B64B1205CE80200E583BA /* libsqlite3.tbd */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA06640E20605B2C006DE3CF /* MKPinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKPinInfo.swift; sourceTree = "<group>"; };
 		FA1FE32E205DFE4E007D6DC7 /* cities_usa.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = cities_usa.sqlite; sourceTree = "<group>"; };
 		FA7B64AE205CDF6B00E583BA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FA7B64B1205CE80200E583BA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -48,6 +50,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA0664102060625E006DE3CF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA06640E20605B2C006DE3CF /* MKPinInfo.swift */,
+				FA95926F205F2E6D002F440F /* Model.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		FA7B64B0205CE80200E583BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,13 +99,13 @@
 		FAA7042C205BF71300BDB76A /* SQLiteCitySearch */ = {
 			isa = PBXGroup;
 			children = (
+				FA0664102060625E006DE3CF /* Models */,
 				FA95926C205EB86A002F440F /* ViewControllers */,
 				FAA7042D205BF71300BDB76A /* AppDelegate.swift */,
 				FAA70431205BF71300BDB76A /* Main.storyboard */,
 				FAA70434205BF71300BDB76A /* Assets.xcassets */,
 				FAA70436205BF71300BDB76A /* LaunchScreen.storyboard */,
 				FAA70439205BF71300BDB76A /* Info.plist */,
-				FA95926F205F2E6D002F440F /* Model.swift */,
 			);
 			path = SQLiteCitySearch;
 			sourceTree = "<group>";
@@ -176,6 +187,7 @@
 				FAA70430205BF71300BDB76A /* ViewController.swift in Sources */,
 				FA7B64AF205CDF6B00E583BA /* MapViewController.swift in Sources */,
 				FAA7042E205BF71300BDB76A /* AppDelegate.swift in Sources */,
+				FA06640F20605B2C006DE3CF /* MKPinInfo.swift in Sources */,
 				FA959270205F2E6D002F440F /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
