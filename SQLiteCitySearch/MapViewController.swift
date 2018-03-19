@@ -7,25 +7,29 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
     
-    var selectedCityState = String()
+    var selectedCity = City()
 
+    @IBOutlet weak var mapView: MKMapView!
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let swipeLeft = UISwipeGestureRecognizer()
+       /* let swipeLeft = UISwipeGestureRecognizer()
         swipeLeft.addTarget(self, action: #selector(dismissMapView))
         swipeLeft.direction = .left
-        self.view!.addGestureRecognizer(swipeLeft)
+        self.view!.addGestureRecognizer(swipeLeft)*/
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         // Debug
-        print("selectedCityState: \(selectedCityState)")
+        print("selectedCityState: \(selectedCity.name)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,9 +37,9 @@ class MapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func dismissMapView(_ sender: Any) {
+   /* @IBAction func dismissMapView(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-    }
+    }*/
     
 
     /*

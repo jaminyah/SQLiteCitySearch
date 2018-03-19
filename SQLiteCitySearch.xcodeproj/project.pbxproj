@@ -10,6 +10,8 @@
 		FA1FE32F205DFE4E007D6DC7 /* cities_usa.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = FA1FE32E205DFE4E007D6DC7 /* cities_usa.sqlite */; };
 		FA7B64AF205CDF6B00E583BA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7B64AE205CDF6B00E583BA /* MapViewController.swift */; };
 		FA7B64B2205CE80200E583BA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7B64B1205CE80200E583BA /* libsqlite3.tbd */; };
+		FA95926E205F05C2002F440F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA95926D205F05C2002F440F /* MapKit.framework */; };
+		FA959270205F2E6D002F440F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95926F205F2E6D002F440F /* Model.swift */; };
 		FAA7042E205BF71300BDB76A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA7042D205BF71300BDB76A /* AppDelegate.swift */; };
 		FAA70430205BF71300BDB76A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA7042F205BF71300BDB76A /* ViewController.swift */; };
 		FAA70433205BF71300BDB76A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA70431205BF71300BDB76A /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 		FA7B64AE205CDF6B00E583BA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FA7B64B1205CE80200E583BA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		FA7B64B3205CE89400E583BA /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		FA95926D205F05C2002F440F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FA95926F205F2E6D002F440F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		FAA7042A205BF71300BDB76A /* SQLiteCitySearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SQLiteCitySearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA7042D205BF71300BDB76A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAA7042F205BF71300BDB76A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA95926E205F05C2002F440F /* MapKit.framework in Frameworks */,
 				FA7B64B2205CE80200E583BA /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,6 +51,7 @@
 		FA7B64B0205CE80200E583BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA95926D205F05C2002F440F /* MapKit.framework */,
 				FA7B64B1205CE80200E583BA /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
@@ -88,6 +94,7 @@
 				FAA70434205BF71300BDB76A /* Assets.xcassets */,
 				FAA70436205BF71300BDB76A /* LaunchScreen.storyboard */,
 				FAA70439205BF71300BDB76A /* Info.plist */,
+				FA95926F205F2E6D002F440F /* Model.swift */,
 			);
 			path = SQLiteCitySearch;
 			sourceTree = "<group>";
@@ -169,6 +176,7 @@
 				FAA70430205BF71300BDB76A /* ViewController.swift in Sources */,
 				FA7B64AF205CDF6B00E583BA /* MapViewController.swift in Sources */,
 				FAA7042E205BF71300BDB76A /* AppDelegate.swift in Sources */,
+				FA959270205F2E6D002F440F /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

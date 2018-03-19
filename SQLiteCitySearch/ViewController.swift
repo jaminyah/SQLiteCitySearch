@@ -12,13 +12,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var resultView: UITableView!
     
+    var cityObject = City()
     fileprivate let reuseCellIdentifier = "cityCell"
     fileprivate let searchController = UISearchController(searchResultsController: nil)
     internal let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
     
     var filteredList = [String]()
     let emptyArray = [String]()
-    
+    var cityList = [City]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,10 @@ class ViewController: UIViewController {
         searchController.searchBar.placeholder = "Search Cities"
         resultView.tableHeaderView = searchController.searchBar
         searchController.searchBar.delegate = self
+        
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.navigationItem.titleView = searchController.searchBar
+        
     }
 
     func filterSearchController(_ searchBar: UISearchBar) {
@@ -89,14 +94,13 @@ extension ViewController: UITableViewDelegate {
         
         if segue.identifier == "mapSegue" {
             if let indexPath = resultView.indexPathForSelectedRow {
-                let selectedCity = filteredList[indexPath.row]
+                let selectedCity = cityList[indexPath.row]
                 print("CityList - selectedCity: \(selectedCity)")
                 let mapViewController = segue.destination as? MapViewController
-                mapViewController?.selectedCityState = selectedCity
+                mapViewController?.selectedCity = selectedCity
             }
         }
     }
-
 }
 
 
@@ -128,6 +132,7 @@ extension ViewController : UISearchBarDelegate {
             // Set search results = emptyArray.count
             searchController.isActive = false
             filteredList.removeAll()
+            cityList.removeAll()
         }
         resultView.reloadData()
     }
@@ -137,6 +142,7 @@ extension ViewController : UISearchBarDelegate {
         var db: OpaquePointer? = nil
         var sqlStatement: OpaquePointer? = nil
         filteredList.removeAll()
+        cityList.removeAll()
         
         let projectBundle = Bundle.main
         let fileMgr = FileManager.default
@@ -151,13 +157,17 @@ extension ViewController : UISearchBarDelegate {
             } else {
                 let count = searchTerm.characters.count
                 //let sqlQry = "SELECT id_state, city FROM us_cities WHERE SUBSTR(city, 1, \(count))=? JOIN us_states ON us_cities.ID_STATE = us_states.ID"
-                let sqlQry = "SELECT city, state_code FROM us_states JOIN us_cities ON us_cities.ID_STATE = us_states.ID WHERE SUBSTR(city, 1, \(count))=? "
+                let sqlQry = "SELECT city, state_code, latitude, longitude FROM us_states JOIN us_cities ON us_cities.ID_STATE = us_states.ID WHERE SUBSTR(city, 1, \(count))=? "
+                
                 if (sqlite3_prepare_v2(db, sqlQry, -1, &sqlStatement, nil) != SQLITE_OK)
                 {
                     print("Problem with prepared statement" + String(sqlite3_errcode(db)));
                 }
                 sqlite3_bind_text(sqlStatement, 0, searchTerm, -1, SQLITE_TRANSIENT)
                 sqlite3_bind_text(sqlStatement, 1, searchTerm, -1, SQLITE_TRANSIENT)
+                sqlite3_bind_text(sqlStatement, 2, searchTerm, -1, SQLITE_TRANSIENT)
+                sqlite3_bind_text(sqlStatement, 3, searchTerm, -1, SQLITE_TRANSIENT)
+
                 while (sqlite3_step(sqlStatement) == SQLITE_ROW) {
                     let concatName: String = String(cString:sqlite3_column_text(sqlStatement, 0)) + ", " +
                        String(cString:sqlite3_column_text(sqlStatement, 1))
@@ -165,6 +175,16 @@ extension ViewController : UISearchBarDelegate {
                     print("State ID + city name: " + concatName)
                     filteredList.append(concatName)
                     
+                    let sqlName = String(cString:sqlite3_column_text(sqlStatement, 0))
+                    let sqlRegion = String(cString:sqlite3_column_text(sqlStatement, 1))
+                    let sqLat = String(cString:sqlite3_column_text(sqlStatement, 2))
+                    let sqLong = String(cString:sqlite3_column_text(sqlStatement, 3))
+                    
+                    let sqLatReal = Double(sqLat)
+                    let sqLongReal = Double(sqLong)
+                    
+                    cityObject = City(name: sqlName, region: sqlRegion, latitude: sqLatReal!, longitude: sqLongReal!)
+                    cityList.append(cityObject)
                 }
                 sqlite3_finalize(sqlStatement)
                 sqlite3_close(db)
